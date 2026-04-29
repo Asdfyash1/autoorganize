@@ -161,5 +161,35 @@ def init(output: str) -> None:
     console.print("[dim]Edit this file to customize your organization rules.[/dim]")
 
 
+@main.command()
+@click.argument("directory", default=".", type=click.Path(exists=True, file_okay=False, resolve_path=True))
+@click.option("--execute", is_flag=True, help="Actually move files (default is dry run).")
+def smart(directory: str, execute: bool) -> None:
+    """AI-powered smart file categorization.
+
+    Uses AI to analyze file contents and suggest intelligent categorizations
+    beyond simple extension-based rules.
+
+    Requires one of: OPENAI_API_KEY, GEMINI_API_KEY, or NVIDIA_API_KEY.
+    """
+    from .ai_organize import ai_categorize
+
+    target = Path(directory)
+    ai_categorize(target, dry_run=not execute)
+
+
+@main.command()
+@click.argument("directory", default=".", type=click.Path(exists=True, file_okay=False, resolve_path=True))
+def suggest_names(directory: str) -> None:
+    """AI-powered file rename suggestions based on content.
+
+    Requires one of: OPENAI_API_KEY, GEMINI_API_KEY, or NVIDIA_API_KEY.
+    """
+    from .ai_organize import ai_rename_suggestions
+
+    target = Path(directory)
+    ai_rename_suggestions(target)
+
+
 if __name__ == "__main__":
     main()
