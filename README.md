@@ -1,5 +1,6 @@
 # AutoOrganize
 
+[![CI](https://github.com/Asdfyash1/autoorganize/actions/workflows/ci.yml/badge.svg)](https://github.com/Asdfyash1/autoorganize/actions/workflows/ci.yml)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![AI Powered](https://img.shields.io/badge/AI-Powered-blueviolet.svg)](#ai-powered-features)
